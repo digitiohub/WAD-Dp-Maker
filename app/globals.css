@@ -81,6 +81,18 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --page-bg: #eef6f2;
+  --panel: rgba(255, 255, 255, 0.94);
+  --panel-border: rgba(20, 83, 78, 0.14);
+  --stage-bg: #dfeeea;
+  --ink: #10242a;
+  --muted-ink: #597076;
+  --brand-blue: #175180;
+  --brand-blue-strong: #103d61;
+  --brand-green: #14744f;
+  --brand-green-strong: #0e583b;
+  --soft-blue: #e3f0f8;
+  --soft-green: #e2f4eb;
 }
 
 .dark {
@@ -127,4 +139,50 @@
   html {
     @apply font-sans;
   }
+}
+
+.reactEasyCrop_Container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  cursor: move;
+  touch-action: none;
+  user-select: none;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.reactEasyCrop_Image,
+.reactEasyCrop_Video {
+  will-change: transform;
+}
+
+.reactEasyCrop_Contain {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.reactEasyCrop_Cover_Horizontal {
+  width: 100%;
+  height: auto;
+}
+
+.reactEasyCrop_Cover_Vertical {
+  width: auto;
+  height: 100%;
+}
+
+.reactEasyCrop_CropArea {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 9999em rgba(12, 26, 35, 0.42);
+  transform: translate(-50%, -50%);
 }
