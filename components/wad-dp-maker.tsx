@@ -129,7 +129,6 @@ export function WadDpMaker() {
   const [generatedAsset, setGeneratedAsset] = useState<GeneratedAsset | null>(
     null
   );
-  const [totalGenerations, setTotalGenerations] = useState<number | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
@@ -296,8 +295,7 @@ export function WadDpMaker() {
       });
 
       try {
-        const result = await logGeneration();
-        setTotalGenerations(result.totalGenerations);
+        await logGeneration();
         setStatusMessage("Your WAD DP is ready. The generation count was saved.");
       } catch (loggingError) {
         const message =
@@ -344,10 +342,6 @@ export function WadDpMaker() {
               <h1 className="font-heading text-4xl leading-none font-semibold text-[var(--ink)] sm:text-5xl">
                 Act On Asthma WAD 2026 Doctor DP Maker
               </h1>
-              <p className="text-sm leading-6 text-[var(--muted-ink)]">
-                Create a campaign-ready doctor display picture in the browser.
-                Photos are used only on this device.
-              </p>
             </div>
 
             <div className="overflow-hidden rounded-xl border border-[var(--panel-border)] bg-white">
@@ -359,28 +353,6 @@ export function WadDpMaker() {
                 src={FRAME_CONFIG.src}
                 width={900}
               />
-            </div>
-
-            <div className="grid gap-3 rounded-xl border border-[var(--panel-border)] bg-white p-4">
-              <div className="flex items-start gap-3">
-                <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--soft-blue)] text-[var(--brand-blue)]">
-                  <Sparkles className="size-4" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[var(--ink)]">
-                    Count tracking
-                  </p>
-                  <p className="mt-1 text-sm leading-5 text-[var(--muted-ink)]">
-                    Each successful generation saves only a timestamp and frame
-                    ID for campaign totals.
-                  </p>
-                </div>
-              </div>
-              {totalGenerations !== null ? (
-                <div className="rounded-lg bg-[var(--soft-green)] px-3 py-2 text-sm font-medium text-[var(--brand-green)]">
-                  All-time generated DPs: {totalGenerations}
-                </div>
-              ) : null}
             </div>
           </div>
         </section>

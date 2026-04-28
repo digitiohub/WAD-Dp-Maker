@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Activity, ArrowLeft, CalendarDays, Gauge } from "lucide-react";
+import { Activity, ArrowLeft, CalendarDays, Gauge, LogOut } from "lucide-react";
 
+import { requireAdminSession } from "@/lib/admin-auth";
 import { getGenerationStats } from "@/lib/generations";
 
 export const dynamic = "force-dynamic";
@@ -13,6 +14,8 @@ function formatDate(value: Date) {
 }
 
 export default async function AdminPage() {
+  await requireAdminSession();
+
   let stats: Awaited<ReturnType<typeof getGenerationStats>> | null = null;
   let errorMessage: string | null = null;
 
@@ -42,13 +45,24 @@ export default async function AdminPage() {
                 WAD frame ID, not uploaded photos or personal data.
               </p>
             </div>
-            <Link
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-[var(--panel-border)] bg-white px-4 text-sm font-semibold text-[var(--ink)] transition hover:bg-[var(--soft-blue)]"
-              href="/"
-            >
-              <ArrowLeft className="size-4" />
-              Back to Maker
-            </Link>
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <Link
+                className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-[var(--panel-border)] bg-white px-4 text-sm font-semibold text-[var(--ink)] transition hover:bg-[var(--soft-blue)]"
+                href="/"
+              >
+                <ArrowLeft className="size-4" />
+                Back to Maker
+              </Link>
+              <form action="/api/admin/logout" method="post">
+                <button
+                  className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg border border-[var(--panel-border)] bg-white px-4 text-sm font-semibold text-[var(--ink)] transition hover:bg-[var(--soft-blue)]"
+                  type="submit"
+                >
+                  <LogOut className="size-4" />
+                  Log Out
+                </button>
+              </form>
+            </div>
           </div>
         </section>
 

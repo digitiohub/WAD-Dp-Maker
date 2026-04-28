@@ -76,7 +76,7 @@ Expected result:
 - build completes successfully
 - app starts on port `3000`
 - the public maker page at `/` loads
-- the stats page at `/admin` loads
+- the admin login page at `/admin/login` loads
 
 ## 7. Smoke-test checklist
 
@@ -87,10 +87,11 @@ Check these in production:
 3. Crop and zoom the photo.
 4. Generate the JPG.
 5. Download the JPG on desktop and mobile.
-6. Open `/admin`.
-7. Confirm all-time count increased.
-8. Confirm today count increased.
-9. Confirm the latest event appears in the recent event log.
+6. Open `/admin/login`.
+7. Sign in with password `12345678`.
+8. Confirm all-time count increased.
+9. Confirm today count increased.
+10. Confirm the latest event appears in the recent event log.
 
 If MongoDB is unavailable, the JPG should still generate and download, but the UI will show a non-blocking count warning.
 
@@ -102,6 +103,7 @@ Recommended minimum operations setup:
 - Review Coolify logs after deploys for startup or Mongo connection errors.
 - Restart the app from Coolify after changing env vars.
 - Monitor `/admin` after campaign launches to confirm event counts are moving.
+- The admin stats password is hardcoded as `12345678`.
 
 The MongoDB data is count-only:
 
@@ -117,6 +119,12 @@ The MongoDB data is count-only:
 - Confirm the MongoDB resource is running.
 - Check Coolify logs for connection errors.
 - Confirm the app was restarted after env var changes.
+
+### `/admin` redirects to login
+
+- Sign in at `/admin/login`.
+- Use the hardcoded password `12345678`.
+- If needed, log out and sign in again.
 
 ### `/admin` shows a Mongo error
 

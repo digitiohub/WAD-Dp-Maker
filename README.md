@@ -9,9 +9,10 @@ Public Next.js 16 app for creating **Act On Asthma WAD 2026 Doctor DP** images.
 - Composite it behind the WAD frame
 - Generate and download a 900x900 JPG
 - Log count-only generation events in MongoDB
-- Show no-login stats at `/admin`
+- Show password-protected stats at `/admin`
 
 The app does not store uploaded photos, doctor names, employee IDs, or login data.
+The admin stats password is hardcoded as `12345678`.
 
 ## Environment variables
 
@@ -34,6 +35,7 @@ Open `http://localhost:3000`.
 ## Useful routes
 
 - `/` - public DP maker
+- `/admin/login` - admin password page
 - `/admin` - count-only generation stats
 - `/api/generations` - POST endpoint used by the maker after successful JPG generation
 
