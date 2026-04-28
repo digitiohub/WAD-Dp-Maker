@@ -343,17 +343,6 @@ export function WadDpMaker() {
                 Act On Asthma WAD 2026 Doctor DP Maker
               </h1>
             </div>
-
-            <div className="overflow-hidden rounded-xl border border-[var(--panel-border)] bg-white">
-              <Image
-                alt="Act On Asthma WAD 2026 Doctor DP frame"
-                className="h-auto w-full"
-                height={900}
-                priority
-                src={FRAME_CONFIG.src}
-                width={900}
-              />
-            </div>
           </div>
         </section>
 
